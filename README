@@ -1,0 +1,33 @@
+OpenEmbedded BSP layer for ClarTex boards and computers
+
+About:
+-----
+	The purpose of this layer is to provide OpenEmbedded BSP support for
+	 devices using upstream sources as much as possible.
+
+Dependencies:
+------------
+	URI: git://git.openembedded.org/openembedded-core
+	layers: meta
+	branch: kirkstone
+
+	URI: git://git.yoctoproject.org/meta-arm
+	layers: meta-arm, meta-arm-toolchain
+	branch: matched branches (e.g. kirkstone, ...)
+
+Status of supported boards:
+--------------------------
+	builds and boots wic image:
+		lpi-cm
+	builds:
+
+
+>
+
+Maintainer:
+----------
+	Petr Pavlata <petr@acrux.cz>
+
+Brief History:
+-------------
+
