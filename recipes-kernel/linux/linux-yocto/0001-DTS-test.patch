@@ -1,0 +1,110 @@
+From aa2a24bef6a40de49e1cac0a2b3216e08857b1b7 Mon Sep 17 00:00:00 2001
+From: Petr Pavlata <petr@acrux.cz>
+Date: Mon, 27 Jun 2022 14:32:54 +0200
+Subject: [PATCH] DTS test
+
+---
+ .../arm64/boot/dts/rockchip/rk3328-lpi-cm.dts | 53 +++++++++++++++----
+ oe-logs                                       |  1 +
+ oe-workdir                                    |  1 +
+ 3 files changed, 45 insertions(+), 10 deletions(-)
+ create mode 120000 oe-logs
+ create mode 120000 oe-workdir
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-lpi-cm.dts b/arch/arm64/boot/dts/rockchip/rk3328-lpi-cm.dts
+index c388a8564189..f5cb010a4092 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-lpi-cm.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-lpi-cm.dts
+@@ -83,8 +83,49 @@ standby_led: led-1 {
+ };
+ 
+ 
++/******************************************************/
++/*      LINET Specific MAP */
++&uart1 {
++	status = "okay";
++};
++
++&i2c3 {
++	status = "okay";
++};
++
++
++&u2phy {
++	status = "okay";
++};
++
++&u2phy_host {
++	status = "okay";
++};
++
++&u2phy_otg {
++	status = "okay";
++};
++
++&usb20_otg {
++	dr_mode = "host";
++	status = "okay";
++};
++
++
++&spi0 {
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++
++		/* maximum speed for Rockchip SPI */
++		spi-max-frequency = <50000000>;
++	};
++};
+ 
+ 
++/******************************************************/
+ 
+ &cpu0 {
+ 	cpu-supply = <&vdd_arm>;
+@@ -295,17 +336,7 @@ &spdif {
+ 	status = "okay";
+ };
+ 
+-&spi0 {
+-	status = "okay";
+ 
+-	flash@0 {
+-		compatible = "jedec,spi-nor";
+-		reg = <0>;
+-
+-		/* maximum speed for Rockchip SPI */
+-		spi-max-frequency = <50000000>;
+-	};
+-};
+ 
+ &tsadc {
+ 	rockchip,hw-tshut-mode = <0>;
+@@ -313,6 +344,8 @@ &tsadc {
+ 	status = "okay";
+ };
+ 
++
++
+ &uart2 {
+ 	status = "okay";
+ };
+diff --git a/oe-logs b/oe-logs
+new file mode 120000
+index 000000000000..82da761f60da
+--- /dev/null
++++ b/oe-logs
+@@ -0,0 +1 @@
++/home/lab1/projects/cleartex/lpi-cm/lpi-yocto/poky/build/tmp/work/lpi_cm-poky-linux/linux-yocto/5.15.36+git999-r0/temp
+\ No newline at end of file
+diff --git a/oe-workdir b/oe-workdir
+new file mode 120000
+index 000000000000..c2bc017fe51d
+--- /dev/null
++++ b/oe-workdir
+@@ -0,0 +1 @@
++/home/lab1/projects/cleartex/lpi-cm/lpi-yocto/poky/build/tmp/work/lpi_cm-poky-linux/linux-yocto/5.15.36+git999-r0
+\ No newline at end of file
